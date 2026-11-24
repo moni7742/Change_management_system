@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closed Changes | Change Management Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Top Navigation -->
+    <header class="top-navbar">
+        <div class="navbar-left">
+            <div class="brand">
+                <span class="brand-service">Service</span><span class="brand-now">Now</span>
+            </div>
+            <span class="portal-name">Change Management Portal</span>
+        </div>
+
+        <div class="navbar-right">
+            <span id="closedName">User</span>
+            <div class="profile-icon" id="profileInitial">U</div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <p class="sidebar-heading">WORKSPACE</p>
+
+            <a href="manager.html" class="sidebar-link">
+                Manager Review
+            </a>
+
+            <a href="technicalreview.html" class="sidebar-link">
+                Technical Review
+            </a>
+
+            <a href="cab.html" class="sidebar-link">
+                CAB Review
+            </a>
+
+            <a href="implementation.html" class="sidebar-link">
+                Implementation
+            </a>
+
+            <a href="closedchanges.html" class="sidebar-link active">
+                Closed Changes
+            </a>
+
+            <p class="sidebar-heading">ACCOUNT</p>
+
+            <a href="#" class="sidebar-link" onclick="logout()">
+                Logout
+            </a>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+
+            <div class="page-heading">
+                <div>
+                    <h1>Closed Changes</h1>
+                    <p>View completed and closed change requests.</p>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <section class="request-summary">
+
+                <div class="summary-box">
+                    <h3>Total Closed Changes</h3>
+                    <p id="closedTotal">0</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Completed Requests</h3>
+                    <p id="closedCompleted">0</p>
+                </div>
+
+            </section>
+
+            <!-- Closed Changes Table -->
+            <section class="request-table-section">
+
+                <div class="request-toolbar">
+                    <h2 class="request-toolbar-title">
+                        Closed Change Requests
+                    </h2>
+
+                    <div class="request-filters">
+
+                        <div class="search-wrapper">
+                            <label for="closedSearch">Search Requests</label>
+                            <input
+                                type="search"
+                                id="closedSearch"
+                                placeholder="Search by ID, employee or description">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="request-table">
+
+                        <thead>
+                            <tr>
+                                <th>Change Number</th>
+                                <th>Employee</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>Assignment Group</th>
+                                <th>Completed Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="closedChangesTable">
+                            <tr>
+                                <td colspan="8" class="empty-message">
+                                    Loading closed changes...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="closedRequestCount">
+                        Showing 0 request(s)
+                    </span>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Shared JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>

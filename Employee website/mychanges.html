@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Change Requests | Change Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+
+<header class="top-navbar">
+    <div class="navbar-left">
+        <div class="brand">
+            <span class="brand-service">service</span><span class="brand-now">now</span>
+        </div>
+        <span class="portal-name">Change Management</span>
+    </div>
+    <div class="navbar-right">
+        <span class="welcome-user" id="topEmployeeName">Employee</span>
+        <div class="profile-icon" id="profileInitial">E</div>
+    </div>
+</header>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-heading">WORKSPACE</div>
+        <a href="userpage.html" class="sidebar-link">⌂ Homepage</a>
+
+        <div class="sidebar-heading">IT SERVICE MANAGEMENT</div>
+        <a href="change.html" class="sidebar-link">＋ Create Change Request</a>
+        <a href="mychanges.html" class="sidebar-link active">▤ My Change Requests</a>
+        <a href="closedchanges.html" class="sidebar-link">✓ Closed Changes</a>
+
+        <div class="sidebar-heading">ACCOUNT</div>
+        <a href="#" class="sidebar-link" onclick="showProfile(); return false;">♙ My Profile</a>
+        <a href="#" class="sidebar-link" onclick="logout(); return false;">⇥ Logout</a>
+    </aside>
+
+    <main class="dashboard-main">
+
+        <div class="page-heading">
+            <div>
+                <h1>My Change Requests</h1>
+                <p>View and track the status of your submitted changes.</p>
+            </div>
+
+            <button class="create-btn"
+                    onclick="window.location.href='change.html'">
+                + Create New Change
+            </button>
+        </div>
+
+        <!-- Summary -->
+        <section class="request-summary">
+
+            <div class="summary-box">
+                <span>Total Requests</span>
+                <strong id="myTotal">0</strong>
+            </div>
+
+            <div class="summary-box">
+                <span>Pending</span>
+                <strong id="myPending">0</strong>
+            </div>
+
+            <div class="summary-box">
+                <span>Approved</span>
+                <strong id="myApproved">0</strong>
+            </div>
+
+            <div class="summary-box">
+                <span>Rejected</span>
+                <strong id="myRejected">0</strong>
+            </div>
+
+        </section>
+
+        <!-- Search and Filter -->
+        <section class="request-table-section">
+
+            <div class="request-toolbar">
+                <div>
+                    <h2>Change Request Records</h2>
+                    <p>All requests submitted by your employee account.</p>
+                </div>
+
+                <div class="request-filters">
+                    <input type="text" id="searchChange"
+                           placeholder="Search change number or description">
+
+                    <label for="filterStatus" class="sr-only">
+    Filter requests by status
+</label>
+
+<select id="filterStatus" name="filterStatus">
+    <option value="">All States</option>
+    <option value="New">New</option>
+    <option value="Assess">Assess</option>
+    <option value="Authorize">Authorize</option>
+    <option value="Scheduled">Scheduled</option>
+    <option value="Implement">Implement</option>
+    <option value="Review">Review</option>
+    <option value="Closed">Closed</option>
+    <option value="Rejected">Rejected</option>
+</select>               </div>
+            </div>
+
+            <div class="table-container">
+                <table class="request-table">
+                    <thead>
+                        <tr>
+                            <th>Change Number</th>
+                            <th>Short Description</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Priority</th>
+                            <th>Risk</th>
+                            <th>State</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="myChangesTable">
+                        <tr>
+                            <td colspan="8" class="empty-message">
+                                Loading change requests...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="table-note" id="requestCount"></p>
+
+        </section>
+
+        <!-- Request Details Modal -->
+        <div id="changeDetailsModal" class="details-modal">
+
+            <div class="details-modal-content">
+
+                <div class="details-modal-header">
+                    <h2>Change Request Details</h2>
+                    <button type="button" onclick="closeChangeDetails()">×</button>
+                </div>
+
+                <div id="changeDetailsContent"></div>
+
+            </div>
+
+        </div>
+
+    </main>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

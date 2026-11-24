@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Implementation | ServiceNow</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <header class="top-navbar">
+        <div class="navbar-left">
+            <div class="brand">
+                <span class="brand-service">Service</span><span class="brand-now">Now</span>
+            </div>
+            <span class="portal-name">Change Management Portal</span>
+        </div>
+
+        <div class="navbar-right">
+            <span id="implementationName">Implementation Team</span>
+            <div class="profile-icon" id="profileInitial">I</div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <p class="sidebar-heading">WORKSPACE</p>
+
+            <a href="technicalreview.html" class="sidebar-link">
+                Technical Review
+            </a>
+
+            <a href="cab.html" class="sidebar-link">
+                CAB Review
+            </a>
+
+            <a href="implementation.html" class="sidebar-link active">
+                Implementation
+            </a>
+
+            <a href="closedchanges.html" class="sidebar-link">
+                Closed Changes
+            </a>
+
+            <p class="sidebar-heading">ACCOUNT</p>
+
+            <a href="#" class="sidebar-link" onclick="logout(); return false;">
+                Logout
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+
+            <div class="page-heading">
+                <div>
+                    <h1>Change Implementation</h1>
+                    <p>Implement and complete CAB-authorized changes.</p>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <section class="request-summary">
+
+                <div class="summary-box">
+                    <span>Total Requests</span>
+                    <strong id="implementationTotal">0</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Pending</span>
+                    <strong id="implementationPending">0</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>In Progress</span>
+                    <strong id="implementationProgress">0</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Completed</span>
+                    <strong id="implementationCompleted">0</strong>
+                </div>
+
+            </section>
+
+            <!-- Implementation Requests -->
+            <section class="request-table-section">
+
+                <div class="request-toolbar">
+                    <div class="request-toolbar-title">
+                        <h2>CAB-Authorized Change Requests</h2>
+                        <p>Review and manage authorized changes.</p>
+                    </div>
+
+                    <div class="request-filters">
+
+                        <div class="search-wrapper">
+                            <label for="implementationSearch">Search Requests</label>
+                            <input
+                                type="search"
+                                id="implementationSearch"
+                                placeholder="Search by ID or employee">
+                        </div>
+
+                        <div class="filter-wrapper">
+                            <label for="implementationFilter">Filter by Status</label>
+                            <select id="implementationFilter">
+                                <option value="All">All Statuses</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Implement">In Progress</option>
+                                <option value="Closed">Completed</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="request-table">
+                        <thead>
+                            <tr>
+                                <th>Change Number</th>
+                                <th>Employee</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>Risk</th>
+                                <th>State</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="implementationChangesTable">
+                            <tr>
+                                <td colspan="8" class="empty-message">
+                                    Loading requests...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="implementationRequestCount">
+                        Showing 0 request(s)
+                    </span>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Implementation Modal -->
+    <div
+        id="implementationModal"
+        class="details-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="implementationModalTitle">
+
+        <div class="details-modal-content manager-modal-content">
+
+            <div class="details-modal-header">
+                <div>
+                    <h2 id="implementationModalTitle">Implementation Details</h2>
+                    <p>Review the authorized change and update its progress.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close-btn"
+                    onclick="closeImplementationModal()"
+                    aria-label="Close implementation details">
+                    &times;
+                </button>
+            </div>
+
+            <div id="implementationDetails"></div>
+
+            <div class="form-group manager-comments-group">
+                <label for="implementationComments">
+                    Implementation Comments
+                </label>
+
+                <textarea
+                    id="implementationComments"
+                    rows="4"
+                    placeholder="Enter implementation notes..."></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeImplementationModal()">
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="approve-btn"
+                    id="startImplementationBtn"
+                    onclick="updateImplementationStatus('Implement')">
+                    Start Implementation
+                </button>
+
+                <button
+                    type="button"
+                    class="approve-btn"
+                    id="completeImplementationBtn"
+                    onclick="updateImplementationStatus('Closed')">
+                    Complete Implementation
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

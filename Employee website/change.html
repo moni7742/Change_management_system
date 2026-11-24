@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Change Request | Change Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+
+<header class="top-navbar">
+    <div class="navbar-left">
+        <div class="brand">
+            <span class="brand-service">service</span><span class="brand-now">now</span>
+        </div>
+        <span class="portal-name">Change Management</span>
+    </div>
+    <div class="navbar-right">
+        <span class="welcome-user" id="topEmployeeName">Employee</span>
+        <div class="profile-icon" id="profileInitial">E</div>
+    </div>
+</header>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-heading">WORKSPACE</div>
+        <a href="userpage.html" class="sidebar-link">⌂ Homepage</a>
+
+        <div class="sidebar-heading">IT SERVICE MANAGEMENT</div>
+        <a href="change.html" class="sidebar-link active">＋ Create Change Request</a>
+        <a href="mychanges.html" class="sidebar-link">▤ My Change Requests</a>
+        <a href="closedchanges.html" class="sidebar-link">✓ Closed Changes</a>
+
+        <div class="sidebar-heading">ACCOUNT</div>
+        <a href="#" class="sidebar-link" onclick="showProfile(); return false;">♙ My Profile</a>
+        <a href="#" class="sidebar-link" onclick="logout(); return false;">⇥ Logout</a>
+    </aside>
+
+    <main class="dashboard-main">
+
+        <div class="page-heading">
+            <div>
+                <h1>Change Request</h1>
+                <p>Submit a new IT infrastructure change request.</p>
+            </div>
+            <button class="secondary-btn" onclick="window.location.href='userpage.html'">
+                Back to Dashboard
+            </button>
+        </div>
+
+        <!-- Workflow Progress -->
+        <section class="workflow-progress">
+            <div class="workflow-step current"><span>1</span> New</div>
+            <div class="workflow-step"><span>2</span> Assess</div>
+            <div class="workflow-step"><span>3</span> Authorize</div>
+            <div class="workflow-step"><span>4</span> Scheduled</div>
+            <div class="workflow-step"><span>5</span> Implement</div>
+            <div class="workflow-step"><span>6</span> Review</div>
+            <div class="workflow-step"><span>7</span> Closed</div>
+        </section>
+
+        <form id="changeForm">
+
+            <!-- Basic Details -->
+            <section class="change-form-section">
+                <h2>Change Details</h2>
+
+                <div class="change-grid">
+
+                    <div class="form-group">
+                        <label>Change Number</label>
+                        <input type="text" id="changeNumber" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Requested By</label>
+                        <input type="text" id="requestedBy" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option>Hardware</option>
+                            <option>Software</option>
+                            <option>Network</option>
+                            <option>Database</option>
+                            <option>Server</option>
+                            <option>Security</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Change Type *</label>
+                        <select id="type" required>
+                            <option value="">Select Type</option>
+                            <option>Standard</option>
+                            <option>Normal</option>
+                            <option>Emergency</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Priority *</label>
+                        <select id="priority" required>
+                            <option value="">Select Priority</option>
+                            <option>1 - Critical</option>
+                            <option>2 - High</option>
+                            <option>3 - Moderate</option>
+                            <option>4 - Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="risk">Risk *</label>
+                        <select id="risk" required>
+                            <option value="">Select Risk</option>
+                            <option>High</option>
+                            <option>Moderate</option>
+                            <option>Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="impact">Impact *</label>
+                        <select id="impact" required>
+                            <option value="">Select Impact</option>
+                            <option>1 - High</option>
+                            <option>2 - Medium</option>
+                            <option>3 - Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>State</label>
+                        <input type="text" value="New" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assignmentGroup">Assignment Group</label>
+                        <select id="assignmentGroup">
+                            <option value="">Select Team</option>
+                            <option>Network Team</option>
+                            <option>Server Team</option>
+                            <option>Database Team</option>
+                            <option>Security Team</option>
+                            <option>Application Support Team</option>
+                        </select>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Description -->
+            <section class="change-form-section">
+                <h2>Change Description</h2>
+
+                <div class="form-group">
+                    <label for="shortDescription">Short Description *</label>
+                    <input type="text" id="shortDescription"
+                           placeholder="Example: Upgrade Windows Server" maxlength="150" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Detailed Description *</label>
+                    <textarea id="description" rows="4"
+                              placeholder="Explain the proposed change in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="justification">Business Justification *</label>
+                    <textarea id="justification" rows="3"
+                              placeholder="Why is this change required?" required></textarea>
+                </div>
+            </section>
+
+            <!-- Planning -->
+            <section class="change-form-section">
+                <h2>Planning Information</h2>
+
+                <div class="change-grid">
+                    <div class="form-group">
+                        <label for="startDate">Planned Start Date *</label>
+                        <input type="datetime-local" id="startDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate">Planned End Date *</label>
+                        <input type="datetime-local" id="endDate" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="implementationPlan">Implementation Plan *</label>
+                    <textarea id="implementationPlan" rows="3"
+                              placeholder="Explain the steps for implementing the change..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="backoutPlan">Backout Plan *</label>
+                    <textarea id="backoutPlan" rows="3"
+                              placeholder="Explain how to reverse the change if it fails..." required></textarea>
+                </div>
+            </section>
+
+            <!-- Submission -->
+            <div class="form-actions">
+                <button type="reset" class="secondary-btn">Clear Form</button>
+                <button type="submit" class="primary-btn submit-change-btn">
+                    Submit Change Request
+                </button>
+            </div>
+
+            <p id="changeMessage" class="message"></p>
+
+        </form>
+
+    </main>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

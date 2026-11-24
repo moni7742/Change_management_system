@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login | Change Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+
+    <header class="login-header">
+        <div class="brand">
+            <span class="brand-service">service</span><span class="brand-now">now</span>
+        </div>
+        <span class="header-title">Change Management Portal</span>
+    </header>
+
+    <main class="login-container">
+
+        <section class="login-info">
+            <h1>IT Change Management</h1>
+            <p>
+                Welcome to the IT Change Management Portal.
+                Submit, monitor and manage infrastructure
+                change requests through a structured approval process.
+            </p>
+
+            <div class="info-features">
+                <div>✓ Secure Employee Access</div>
+                <div>✓ Change Request Tracking</div>
+                <div>✓ Approval Workflow</div>
+                <div>✓ Implementation Monitoring</div>
+            </div>
+        </section>
+
+        <section class="login-card">
+            <h2>Employee Login</h2>
+            <p class="login-subtitle">Sign in to access your account</p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="email">Employee Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    Login
+                </button>
+
+                <p id="loginMessage" class="message"></p>
+
+            </form>
+
+            <p class="register-link">
+                Don't have an account?
+                <a href="register.html">Register here</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="login-footer">
+        © 2026 Change Management System | IT Service Management
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

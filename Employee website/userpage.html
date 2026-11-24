@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard | Change Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Top Navigation -->
+    <header class="top-navbar">
+
+        <div class="navbar-left">
+            <div class="brand">
+                <span class="brand-service">service</span><span class="brand-now">now</span>
+            </div>
+            <span class="portal-name">Change Management</span>
+        </div>
+
+        <div class="navbar-right">
+            <span class="welcome-user" id="topEmployeeName">Employee</span>
+            <div class="profile-icon" id="profileInitial">E</div>
+        </div>
+
+    </header>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-heading">WORKSPACE</div>
+
+            <a href="userpage.html" class="sidebar-link active">
+                <span>⌂</span> Homepage
+            </a>
+
+            <div class="sidebar-heading">IT SERVICE MANAGEMENT</div>
+
+            <a href="change.html" class="sidebar-link">
+                <span>＋</span> Create Change Request
+            </a>
+
+            <a href="mychanges.html" class="sidebar-link">
+                <span>▤</span> My Change Requests
+            </a>
+
+            <a href="closedchanges.html" class="sidebar-link">
+                <span>✓</span> Closed Changes
+            </a>
+
+            <div class="sidebar-heading">ACCOUNT</div>
+
+            <a href="#" class="sidebar-link" onclick="showProfile(); return false;">
+                <span>♙</span> My Profile
+            </a>
+
+            <a href="#" class="sidebar-link" onclick="logout(); return false;">
+                <span>⇥</span> Logout
+            </a>
+
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard-main">
+
+            <div class="page-heading">
+                <div>
+                    <h1>Employee Dashboard</h1>
+                    <p>Welcome to the IT Change Management Portal.</p>
+                </div>
+
+                <button class="create-btn"
+                        onclick="window.location.href='change.html'">
+                    + Create New Change
+                </button>
+            </div>
+
+            <!-- Welcome Section -->
+            <section class="welcome-banner">
+                <div>
+                    <h2 id="welcomeEmployee">Welcome, Employee!</h2>
+                    <p>
+                        Manage your IT infrastructure change requests
+                        and monitor their approval progress.
+                    </p>
+                </div>
+                <div class="banner-icon">⚙</div>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="dashboard-cards">
+
+                <div class="dashboard-card blue-card">
+                    <div class="card-label">Total Changes</div>
+                    <div class="card-number" id="totalChanges">0</div>
+                    <div class="card-description">All submitted requests</div>
+                </div>
+
+                <div class="dashboard-card orange-card">
+                    <div class="card-label">Pending Changes</div>
+                    <div class="card-number" id="pendingChanges">0</div>
+                    <div class="card-description">Awaiting review or approval</div>
+                </div>
+
+                <div class="dashboard-card green-card">
+                    <div class="card-label">Approved Changes</div>
+                    <div class="card-number" id="approvedChanges">0</div>
+                    <div class="card-description">Approved requests</div>
+                </div>
+
+                <div class="dashboard-card red-card">
+                    <div class="card-label">Rejected Changes</div>
+                    <div class="card-number" id="rejectedChanges">0</div>
+                    <div class="card-description">Rejected requests</div>
+                </div>
+
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="dashboard-section">
+
+                <h2>Change Management</h2>
+                <p class="section-description">
+                    Select an option to manage your change requests.
+                </p>
+
+                <div class="action-grid">
+
+                    <div class="action-card"
+                         onclick="window.location.href='change.html'">
+                        <div class="action-icon">＋</div>
+                        <h3>Create Change Request</h3>
+                        <p>Submit a new IT infrastructure change.</p>
+                        <span>Start Request →</span>
+                    </div>
+
+                    <div class="action-card"
+                         onclick="window.location.href='mychanges.html'">
+                        <div class="action-icon">▤</div>
+                        <h3>My Change Requests</h3>
+                        <p>View and track your submitted requests.</p>
+                        <span>View Requests →</span>
+                    </div>
+
+                    <div class="action-card"
+                         onclick="window.location.href='closedchanges.html'">
+                        <div class="action-icon">✓</div>
+                        <h3>Closed Changes</h3>
+                        <p>View completed change requests.</p>
+                        <span>View Closed Changes →</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Recent Requests -->
+            <section class="dashboard-section recent-section">
+
+                <div class="section-header">
+                    <h2>Recent Change Requests</h2>
+                    <a href="mychanges.html">View All</a>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Change Number</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Risk</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recentChanges">
+                            <tr>
+                                <td colspan="5" class="empty-message">
+                                    No change requests submitted yet.
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAB Review | Change Management Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Top Navigation -->
+    <header class="top-navbar">
+        <div class="navbar-left">
+            <div class="brand">
+                <span class="brand-service">Service</span><span class="brand-now">Now</span>
+            </div>
+            <span class="portal-name">Change Management Portal</span>
+        </div>
+
+        <div class="navbar-right">
+            <span id="cabName">CAB Team</span>
+            <div class="profile-icon" id="profileInitial">C</div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <p class="sidebar-heading">WORKSPACE</p>
+    
+
+            <a href="cab.html" class="sidebar-link active">
+                CAB Review
+            </a>
+
+            <a href="manager.html" class="sidebar-link">
+    Manager Review
+</a>
+
+            <a href="technicalreview.html" class="sidebar-link">
+                Technical Review
+            </a>
+
+            <a href="implementation.html" class="sidebar-link">
+                Implementation
+            </a>
+
+            <p class="sidebar-heading">ACCOUNT</p>
+
+            <a href="#" class="sidebar-link" onclick="logout()">
+                Logout
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+
+            <div class="page-heading">
+                <div>
+                    <h1>Change Advisory Board Review</h1>
+                    <p>Review technically approved changes and provide authorization.</p>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <section class="request-summary">
+
+                <div class="summary-box">
+                    <h3>Total Requests</h3>
+                    <p id="cabTotal">0</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Pending Review</h3>
+                    <p id="cabPending">0</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Authorized</h3>
+                    <p id="cabApproved">0</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Rejected</h3>
+                    <p id="cabRejected">0</p>
+                </div>
+
+            </section>
+
+            <!-- CAB Requests Table -->
+            <section class="request-table-section">
+
+                <div class="request-toolbar">
+                    <h2 class="request-toolbar-title">
+                        Technical-Approved Change Requests
+                    </h2>
+
+                    <div class="request-filters">
+
+                        <div class="search-wrapper">
+                            <label for="cabSearch">Search Requests</label>
+                            <input
+                                type="search"
+                                id="cabSearch"
+                                placeholder="Search by ID or description">
+                        </div>
+
+                        <div class="filter-wrapper">
+                            <label for="cabFilter">Filter by Status</label>
+                            <select id="cabFilter">
+                                <option value="All">All Statuses</option>
+                                <option value="Authorize">Authorize</option>
+                                <option value="Scheduled">Scheduled</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="request-table">
+
+                        <thead>
+                            <tr>
+                                <th>Change Number</th>
+                                <th>Employee</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>Risk</th>
+                                <th>State</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="cabChangesTable">
+                            <tr>
+                                <td colspan="8" class="empty-message">
+                                    Loading requests...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="cabRequestCount">
+                        Showing 0 request(s)
+                    </span>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- CAB Review Modal -->
+    <div
+        id="cabReviewModal"
+        class="details-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cabModalTitle">
+
+        <div class="details-modal-content manager-modal-content">
+
+            <div class="details-modal-header">
+                <div>
+                    <h2 id="cabModalTitle">CAB Review</h2>
+                    <p>Review the change and provide CAB authorization.</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close-btn"
+                    onclick="closeCABReview()"
+                    aria-label="Close review window">
+                    &times;
+                </button>
+            </div>
+
+            <div id="cabReviewContent">
+                <!-- Change details loaded using JavaScript -->
+            </div>
+
+            <div class="form-group manager-comments-group">
+                <label for="cabComments">CAB Comments</label>
+
+                <textarea
+                    id="cabComments"
+                    rows="4"
+                    placeholder="Enter CAB review comments..."></textarea>
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeCABReview()">
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="reject-btn"
+                    onclick="updateCABDecision('Rejected')">
+                    Reject
+                </button>
+
+                <button
+                    type="button"
+                    class="approve-btn"
+                    onclick="updateCABDecision('Approved')">
+                    Authorize
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
